@@ -17,6 +17,11 @@ from nlp_2020.classification.args import get_args
 from nlp_2020.classification.model import TextClassifier
 from nlp_2020.classification.tool import build_and_cache_dataset, save_model
 
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    datefmt="%m/%d/%Y %H:%M:%S",
+    level=logging.INFO,
+)
 logger = logging.getLogger(__name__)
 
 
@@ -55,6 +60,7 @@ def train(args, writer):
         device=args.device,
     )
 
+    # optimizer, lr_scheduler, criterion
     model.to(args.device)
     criterion = nn.CrossEntropyLoss()
     optimizer = Adam(model.parameters(),
@@ -78,14 +84,13 @@ def train(args, writer):
 
             loss = criterion(preds, category)
             loss.backward()
-            # NOTE: optimizer should update before scheduler
 
             # Logging
             writer.add_scalar('Train/Loss', loss.item(), global_step)
             writer.add_scalar('Train/lr',
                               scheduler.get_last_lr()[0], global_step)
 
-            # Update model
+            # NOTE: Update model, optimizer should update before scheduler
             optimizer.step()
             scheduler.step()
             global_step += 1
@@ -159,7 +164,7 @@ def evaluate(args, model, category_vocab, example_vocab, mode='dev'):
 
 def main():
     args = get_args()
-    writer = SummaryWriter(log_dir=args.output_dir)
+    writer = SummaryWriter()
 
     # Check output dir
     if not os.path.exists(args.output_dir):
@@ -176,7 +181,7 @@ def main():
     device = "cuda" if torch.cuda.is_available() \
             and not args.no_cuda else "cpu"
     args.device = torch.device(device)
-    logger.warning("Process device: %s", device)
+    logger.info("Process device: %s", device)
 
     train(args, writer)
 

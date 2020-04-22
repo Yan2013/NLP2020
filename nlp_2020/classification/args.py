@@ -44,11 +44,11 @@ def get_args():
 
     # Other parameters
     parser.add_argument("--train_batch_size",
-                        default=8,
+                        default=64,
                         type=int,
                         help="Batch size per GPU/CPU for training.")
     parser.add_argument("--eval_batch_size",
-                        default=8,
+                        default=64,
                         type=int,
                         help="Batch size per GPU/CPU for evaluation.")
     # Model config
@@ -65,7 +65,7 @@ def get_args():
                         type=float,
                         help="dropout prob")
     parser.add_argument("--learning_rate",
-                        default=1e-3,
+                        default=1e-4,
                         type=float,
                         help="The initial learning rate for Adam.")
     parser.add_argument("--adam_epsilon",
@@ -95,6 +95,9 @@ def get_args():
     parser.add_argument("--overwrite_output_dir",
                         action="store_true",
                         help="Overwrite the content of the output directory")
+    parser.add_argument("--no_cuda",
+                        action="store_true",
+                        help="Avoid using CUDA when available")
     parser.add_argument(
         "--overwrite_cache",
         action="store_true",

@@ -8,11 +8,6 @@ from torchtext.data import Field, LabelField, TabularDataset
 
 logger = logging.getLogger(__name__)
 
-
-def preprocessing(label2id):
-    pass
-
-
 def build_and_cache_dataset(args, mode='train'):
 
     ID = Field(sequential=False, use_vocab=False)
@@ -44,19 +39,17 @@ def build_and_cache_dataset(args, mode='train'):
     return features
 
 
-def save_model(args, model, tokenizer, optimizer, scheduler, global_step):
+def save_model(args, model, optimizer, scheduler, global_step):
     # Save model checkpoint
     output_dir = os.path.join(args.output_dir, "ckpt-{}".format(global_step))
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     # Take care of distributed/parallel training
-    model_to_save = (model.module if hasattr(model, "module") else model)
-    model_to_save.save_pretrained(output_dir)
-    tokenizer.save_pretrained(output_dir)
-    torch.save(args, os.path.join(output_dir, "training_args.bin"))
+
     logger.info("Saving model checkpoint to %s", output_dir)
     logger.info("Saving optimizer and scheduler states to %s", output_dir)
+    torch.save(model.state_dict(), os.path.join(output_dir, "model.pt"))
     torch.save(optimizer.state_dict(), os.path.join(output_dir,
                                                     "optimizer.pt"))
     torch.save(scheduler.state_dict(), os.path.join(output_dir,

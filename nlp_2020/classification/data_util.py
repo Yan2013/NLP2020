@@ -59,11 +59,10 @@ def split_dataset(
     shuffle(out_categories)
     out_categories = out_categories[:num_out_categories]
 
-    # Of course should use `info` rather than `warning`.
     msg = '\n'.join(
         f'category : {category}, num of examples: {len(mapping[category])}'
         for category in out_categories)
-    logging.warning('%s', msg)
+    logging.info('%s', msg)
 
     min_num_cls_examples = min(
         len(examples) for category, examples in mapping.items()
@@ -71,8 +70,7 @@ def split_dataset(
     min_num_cls_examples = min(
         min_num_cls_examples,
         int(max_train_examples / max(ratios) / num_out_categories))
-    logging.warning('Number of each category for train: %d',
-                    min_num_cls_examples)
+    logging.info('Number of each category for train: %d', min_num_cls_examples)
 
     end = 0
     dirname = os.path.dirname(fpath)
