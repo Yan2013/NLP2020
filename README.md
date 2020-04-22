@@ -51,6 +51,8 @@ jieba==0.42.1
 tensorboard --logdir=./runs
 ```
 
+![baseline](resources/baseline.jpg)
+
 ### Reference
 
 Data link: [link](https://pan.baidu.com/s/1TprekQac-yzNHMsREWZe9g), Verification Code: uhxt  
