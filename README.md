@@ -8,14 +8,21 @@
 
 Python Boilerplate contains all the boilerplate you need to create a Python package.
 
--   Free software: MIT license
--   Documentation: https://nlp-2020.readthedocs.io.
+- Free software: MIT license
+-  Documentation: https://nlp-2020.readthedocs.io.
+
+## FQA
+
+1. 此次实验分组吗?
+   - 不分组
+2. 项目结构太复杂了?
+   - project采用python package的形式组织, 所以会有些复杂, 只需要关注[项目主体](nlp_2020/classification/')就行, 项目只是一个baseline.
 
 ## Baseline
 
 ### Dataset
 
-&emsp;&emsp;本次文本分类实验为多分类实验, 数据集中文本类别为 5 类: `news_culture, news_car, news_edu, news_house, news_agriculture` .
+&emsp;&emsp;本次文本分类实验为多分类实验, 数据集中文本类别为 5 类: `news_culture, news_car, news_edu, news_house, news_agriculture`.  
 &emsp;&emsp;数据集中每一行从左至右的字段为： `example_id, category_code(non-sense), category, example` , 可参考下面的例子.
 
 ```sh
@@ -66,12 +73,19 @@ tensorboard --logdir=./runs
 
 ### Assignment
 
-&emsp;&emsp;本次实验需要利用给出的数据集, 最终提交的形式为pdf, pdf 中至少应有的内容: 小组内成员贡献, 使用的方法(预处理过程, 模型结构, 超参数配置, 评估方法, 测试集上的最终结果等), tensorboard 可视化训练结果. 此外, 请附上完整的代码.  
-&emsp;&emsp;pdf命名格式应该为`组号_组长学号_分类实验`, e.g. `15_SA19225001_分类实验`
+#### content
+
+&emsp;&emsp;本次实验需要利用给出的数据集, 最终提交的形式为压缩包, 压缩包中应该包含 **实验报告(pdf)** 和 **源代码**. 实验报告中至少应有的内容: 预处理过程, 模型结构, 超参数配置, 评估方法, 测试集上的最终结果, tensorboard 可视化训练结果.  
+&emsp;&emsp;pdf命名格式应为`学号_分类实验`, e.g. `SA19225001_分类实验`, 压缩包按此格式命名.  
+**NOTE**: 源代码应该不含数据集和训练的模型参数.
+
+#### ETA
+
+&emsp;&emsp;请在5月15日晚22:00前发送压缩包至`zacb2018@ustc.mail.edu.cn`.
 
 ## Features
 
--   TODO
+- TODO
 
 ## Credits
 
