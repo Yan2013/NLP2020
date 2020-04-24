@@ -9,9 +9,11 @@
 Python Boilerplate contains all the boilerplate you need to create a Python package.
 
 - Free software: MIT license
--  Documentation: https://nlp-2020.readthedocs.io.
+- Documentation: https://nlp-2020.readthedocs.io.
 
 ## FQA
+
+如有问题欢迎提交至`issue`或者直接在QQ群中询问.
 
 1. 此次实验分组吗?
    - 不分组
@@ -81,7 +83,7 @@ tensorboard --logdir=./runs
 
 #### ETA
 
-&emsp;&emsp;请在5月15日晚22:00前发送压缩包至`zacb2018@ustc.mail.edu.cn`.
+&emsp;&emsp;请在5月15日晚22:00前发送压缩包至`zacb2018@mail.ustc.edu.cn`.
 
 ## Features
 
