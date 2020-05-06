@@ -24,11 +24,11 @@ link: https://www.kesci.com/home/dataset/5eb265a8366f4d002d761867
 3. 压缩包的内容应该包括:
    - **实验报告**(pdf);
    - **源码**;
+   - **tensorboard日志文件**
    - **test2数据集结果**(格式应和test1中文数据集相同). 
 4. 实验报告至少应该包括:
    - 预处理过程, 模型结构, 超参数配置, 评估方法;
    - **test1**上的最终结果(非test2);
-   - tensorboard 可视化训练结果;
    - 5个较低分数的翻译结果对比;
    - attention对比: soft, hard, global, local. 如果采用transformer架构, 请加入self-attention的对比
 
